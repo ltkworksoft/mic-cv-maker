@@ -1,0 +1,21 @@
+# Ignore build directories
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# Ignore CMake-generated files
+CMakeCache.txt
+CMakeFiles/
+
+# Ignore OS-specific or IDE-specific files
+*.DS_Store
+*.user
+*.idea/
+*.vscode/
+
+# Ignore compiled binaries
+*.o
+*.so
+*.exe
+*.dll
+*.out
