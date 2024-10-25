@@ -3,11 +3,8 @@
 using namespace std;
 
 int main() {
-    int a, b;
-    cin >> a;
-    cin >> b;
-    const int sum = a + b;
-    cout << sum << endl;
+    cout << "Welcome to my new C++ application: MIC-CV" << endl;
+    cout << "Made by. MakkinCode Team" << endl;
 
     return 0;
 }

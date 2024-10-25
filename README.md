@@ -1,3 +1,5 @@
+# C++ Tutorial
+
 # What is a compiler?
 Computers understand only one language and that language consists of sets of instructions made of "1" and "0"s. It's 
 called: **machine language**.
@@ -122,3 +124,89 @@ int main() {
 ```
 
 # Variables and types
+## Identifiers
+A valid identifier is a sequence of one or more letters, digits, or underscore characters (`_`).
+
+| Not Allowed in identifier     |
+|-------------------------------|
+| Spaces                        |
+| Punctuation marks (. , ; ...) |
+| Symbols (@, $, %...)          |
+
+In addition, identifier must always begin with a letter. They can also begin with underscore character (`_`), but such 
+identifiers are -on most cases- considered reserved for compiler-specific keywords or external identifiers, as well as 
+identifiers containing two successive underscore characters anywhere. In no case can they begin with a digit.
+
+Identifiers created by a programmer cannot match these keywords. The standard reserved keywords that cannot be used for 
+programmer created identifiers are:
+`alignas, alignof, and, and_eq, asm, auto, bitand, bitor, bool, break, case, catch, char, char16_t, char32_t, class, 
+compl, const, constexpr, const_cast, continue, decltype, default, delete, do, double, dynamic_cast, else, enum, 
+explicit, export, extern, false, float, for, friend, goto, if, inline, int, long, mutable, namespace, new, noexcept, 
+not, not_eq, nullptr, operator, or, or_eq, private, protected, public, register, reinterpret_cast, return, short, 
+signed, sizeof, static, static_assert, static_cast, struct, switch, template, this, thread_local, throw, true, 
+try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile, wchar_t, while, xor, xor_eq`
+
+#### Specific compilers may also have additional specific reserved keywords.
+#### C++ is a case-sensitive language, that means: the identifier `player` is different from `Player` or `plaYER`
+
+# Fundamental date types
+The value of variables are stored somewhere in an unspecified location in the computer memory as zeros and ones. Our 
+program does not need to know the exact location where a variable is stored; it can simply refer to it by its name. 
+What the program needs to be aware of is the kind of data stored in the variable. It's not the same store a simple 
+integer as it is to store a letter or a large floating-point number; event though they are all represented using zeros 
+and ones, they are not interpreted in the same way, and in many cases, they don't occupy the same amount of memory.
+
+Fundamental data types can mainly be classified into:
+* Character types: they can represent a single character, such as 'A' or '$'
+* Numerical integer types: they can store a whole number value such as 7 or 10958. They exist in a variety of sizes, 
+and can either be **signed** or **unsigned**
+* Floating-point types: they can represent real values, such as 3.14 or 0.01, with different level of precision.
+* Boolean type: The boolean type, known in C++ as bool, can only represent two states, true or false.
+
+This table provides an overview of fundamental data types in C++, grouped by category and with notes on their size 
+and precision.
+
+| Group                        | Type Names               | Notes on Size / Precision                          |
+|------------------------------|--------------------------|----------------------------------------------------|
+| **Character Types**          | `char`                   | Exactly one byte in size. At least 8 bits.         |
+|                              | `char16_t`               | Not smaller than `char`. At least 16 bits.         |
+|                              | `char32_t`               | Not smaller than `char16_t`. At least 32 bits.     |
+|                              | `wchar_t`                | Can represent the largest supported character set. |
+| **Integer Types (signed)**   | `signed char`            | Same size as `char`. At least 8 bits.              |
+|                              | `signed short int`       | Not smaller than `char`. At least 16 bits.         |
+|                              | `signed int`             | Not smaller than `short`. At least 16 bits.        |
+|                              | `signed long int`        | Not smaller than `int`. At least 32 bits.          |
+|                              | `signed long long int`   | Not smaller than `long`. At least 64 bits.         |
+| **Integer Types (unsigned)** | `unsigned char`          | Same size as signed counterpart.                   |
+|                              | `unsigned short int`     | Same size as signed counterpart.                   |
+|                              | `unsigned int`           | Same size as signed counterpart.                   |
+|                              | `unsigned long int`      | Same size as signed counterpart.                   |
+|                              | `unsigned long long int` | Same size as signed counterpart.                   |
+| **Floating-Point Types**     | `float`                  |                                                    |
+|                              | `double`                 | Precision not less than `float`.                   |
+|                              | `long double`            | Precision not less than `double`.                  |
+| **Boolean Type**             | `bool`                   |                                                    |
+| **Void Type**                | `void`                   | No storage.                                        |
+| **Null Pointer**             | `decltype(nullptr)`      |                                                    |
+
+
+Type sizes above are expressed in bits; the more bits a type has, the more distinct values it can represent, but as the 
+time, also consumes more space in memory:
+
+| Size   | Unique representable values | Notes                        |
+|--------|-----------------------------|------------------------------|
+| 8-bit  | 256                         | = 2^8                        |
+| 16-bit | 65536                       | = 2^16                       |
+| 32-bit | 4294967296                  | = 2^32 (~4 billion)          |
+| 64-bit | 18446744073709551616        | = 2^64 (~18 billion billion) |
+
+The properties of fundamental types in a particular system and compiler implementation can be obtained by using the 
+<u>numeric_limits</u> classes (see standard header [limits](https://cplusplus.com/%3Climits%3E)). If for some reason, 
+types of specific sizes are needed, the library defines certain fixed-size type aliases in header 
+[cstdint](https://cplusplus.com/%3Ccstdint%3E).
+
+The types described above are collectively known as arithmetic types. But two additional fundamental types exist: `void`, 
+which identifies the lack of type; and the type `nullptr`, which is a special type of pointer. Both types will be discussed 
+further in a coming chapter about pointers.
+
+# Declaration of variables
