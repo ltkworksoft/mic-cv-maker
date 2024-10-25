@@ -149,7 +149,7 @@ try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile,
 #### Specific compilers may also have additional specific reserved keywords.
 #### C++ is a case-sensitive language, that means: the identifier `player` is different from `Player` or `plaYER`
 
-# Fundamental date types
+# Fundamental data types
 The value of variables are stored somewhere in an unspecified location in the computer memory as zeros and ones. Our 
 program does not need to know the exact location where a variable is stored; it can simply refer to it by its name. 
 What the program needs to be aware of is the kind of data stored in the variable. It's not the same store a simple 
@@ -210,3 +210,82 @@ which identifies the lack of type; and the type `nullptr`, which is a special ty
 further in a coming chapter about pointers.
 
 # Declaration of variables
+C++ is a strongly-typed language, and requires every variable to be declared with its type before its first use.
+EXAMPLE:
+```c++
+int a;
+float mynumber;
+```
+
+We can declare variables of the same type in a single statement.
+Example:
+```c++
+int a, b, c;
+```
+This same as
+```c++
+int a;
+int b;
+int c;
+```
+
+An example of usage:
+```c++
+// operating with variables;
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    // declaring variables
+    int a, b;
+    int result;
+    
+    // process
+    a = 5;
+    b = 2;
+    a = a + 1;
+    result = a - b;
+    
+    // print out the result:
+    cout << result;
+    
+    // terminate the program1:
+    return 0;
+}
+// output is: 4
+```
+
+# Initialization of variables
+When variables in the example above are declared, they have an undetermined value until they are assigned a value for 
+the first time. But it is possible for a variable to have a specific value from the moment is declared. This is called 
+the initialization of the variable.
+
+There are three ways to initialize variables in C++:
+
+| Initialization                   | Form                               | Example       |
+|----------------------------------|------------------------------------|---------------|
+| c-like (inherited from C)        | `type identifier = initial_value;` | `int x = 0';` |
+| constructor                      | `type identifier(initial_value);`  | `int x(0);`   |
+| uniform (introduced in C++ 2011) | `type identifier{initial_value};`  | `int x{0};`   |
+
+Example:
+```c++
+// Initialization of variables
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5;
+    int b(3);
+    int c{2};
+    int result;
+    
+    a = a + b;
+    result = a - c;
+    cout << result;
+    
+    return 0;
+}
+```

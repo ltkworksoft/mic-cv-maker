@@ -1,10 +1,22 @@
-#include <iostream>
+// operating with variables;
 
+#include <iostream>
 using namespace std;
 
 int main() {
-    cout << "Welcome to my new C++ application: MIC-CV" << endl;
-    cout << "Made by. MakkinCode Team" << endl;
-
+    // declaring variables
+    int a, b;
+    int result;
+    
+    // process
+    a = 5;
+    b = 2;
+    a = a + 1;
+    result = a - b;
+    
+    // print out the result:
+    cout << result;
+    
+    // terminate the program1:
     return 0;
 }
