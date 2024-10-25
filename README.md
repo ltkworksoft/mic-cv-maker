@@ -289,3 +289,224 @@ int main() {
     return 0;
 }
 ```
+
+# Type deduction: auto and decltype
+When a new variable is initialized, the compiler can figure out what the type of the variable is automatically by the 
+initializer. For this, it suffices to use `auto` as the type specifier for the variable:
+```c++
+int foo = 0;
+auto bar = foo; // the same as: int bar = foo;
+```
+
+Variables that are not initialized can also make use of the type deduction with the `decltype` specifier:
+```c++
+int foo = 0;
+decltype(foo) bar; // the same as: int bar;
+// Here, bar is declared as having the same type as foo.
+```
+
+auto and decltype are powerful features recently added to the language. But the type deduction features they introduce 
+are meant to be used either when the type cannot be obtained by other means or when using it improves code readability. 
+The two examples above were likely neither of these use cases. In fact, they probably decreased readability, since, when 
+reading the code, one has to search for the type of foo to actually know the type of bar.
+
+# Introduction to strings
+On of the major strengths of the C++ language is its rich set to compound types, of which the fundamental types are mere 
+building blocks.
+
+An example of compound type is the `string` class. Variables of this type are able to store sequences of characters 
+such as words or sentences. A very useful feature!
+
+In order to declare and use objects (variables) of this type, the program needs to include the header where the type is 
+defined within the standard library (header <string>):
+```c++
+// my first string
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string myString;
+  myString = "This is a string";
+  cout << myString << endl;
+  return 0;
+}
+```
+
+As with fundamental types, all initialization formats are valid with strings (c-like, constructor or uniform).
+#### <u>Note:</u> inserting the `endl` manipulator **end**s the **l**ine (printing a newline character and flushing the 
+stream).
+
+# Constants
+Constants are expressions with a fixed value.
+
+## Literals
+Literals are the most obvious kind of constants. They are used to express particular values within the source code of a 
+program. We have already used some in previous chapters to give specific values to variables or to express messages we 
+wanted our programs to print out, for example, when we wrote: `a = 5;`, the `5` in this piece of code was a literal 
+constant.
+
+Literal constants can be classified into: integer, floating-point, characters, strings, Boolean, pointers, and 
+user-defined literals.
+
+In addition to decimal numbers, C++ allows the use of octal numbers (base 8) and hexadecimal (base 16) as literal 
+constants. For octal literals, the digits are preceded with a 0 character. And for hexadecimal, they are preceded by the 
+characters 0x. For Example:
+```c++
+75 // decimal
+0113 // octal
+0x4b // hexadecimal
+```
+
+All of these represent the same number: 75.
+
+These literal constants have a type, just like variables. By default, integer literals are of type `int`. However, 
+certain suffixes may be appended to an integer literal to specify a different integer type:
+
+| Suffix   | Type modifier |
+|----------|---------------|
+| u or U   | unsigned      |
+| l or L   | long          |
+| ll or LL | long Long     |
+
+Unsigned may be combined with any of the other two in any order to form `unsigned long` or `unsigned long long`.
+For Example:
+```c++
+75 // int
+75u // unsigned int
+75l // long
+75ul // unsigned long
+75lu // unsigned long
+```
+
+#### Floating Point Numerals
+They express real values, with decimals and/or exponents. They can include either a decimal point, an e character 
+(that expresses "by ten at the Xth height", where X is an integer value that follows the e character), or both a 
+decimal point and an e character:
+```c++
+3.14159    // 3.14159
+6.02e23    // 6.02 x 10^23
+1.6e-19    // 1.6 x 10^-19
+3.0        // 3.0  
+```
+
+The default type for floating-point literals is double. Floating-point literals of type float or long double can be 
+specified by adding one of the following suffixes:
+
+| Suffix | Type        |
+|--------|-------------|
+| f or F | float       |
+| l or L | long double |
+
+For example:
+```c++
+3.14159L   // long double
+6.02e23f   // float
+```
+
+#### Character and string literals
+Character and string literals are enclosed in quotes:
+```c++
+'z'
+'p'
+"Hello world"
+"How do you do?"
+```
+
+Here you have a list of the single character escape codes:
+
+| Escape code | Description           |
+|-------------|-----------------------|
+| \n          | newline               |
+| \r          | carriage return       |
+| \t          | tab                   |
+| \v          | vertical tab          |
+| \b          | backspace             |
+| \f          | form feed (page feed) |
+| \a          | alert (beep)          |
+| \'          | single quote (')      |
+| \"          | double quote (")      |
+| \?          | question mark (?)     |
+| \\          | backslash (\)         |
+
+All the character literals and string literals described above are made of characters of type char. A different 
+character type can be specified by using one of the following prefixes:
+
+|Prefix|Character type|
+|------|--------------|
+|u|char16_t|
+|U|char32_t|
+|L|wchar_t|
+
+Note that, unlike type suffixes for integer literals, these prefixes are case-sensitive: lowercase for char16_t and 
+uppercase for char32_t and wchar_t.
+
+For string literals, apart from the above u, U and L, two additional prefixes exist:
+
+| Prefix | Description                                                 |
+|--------|-------------------------------------------------------------|
+| u8     | The string literal is encoded in the executable using UTF-8 |
+| R      | The string literal is a raw string                          |
+
+# Typed constant expressions
+Sometimes, it is just convenient to give a name to a constant value:
+```c++
+const double pi = 3.1415926;
+const char tab = '\t';
+```
+
+# Preprocessor definitions (#define)
+Another mechanism to name constant values is the use of preprocessor definitions. They have the following form:
+`#define identifier replacement`
+
+example:
+```c++
+#include <iostream>
+using namespace std;
+
+#define PI 3.14159
+#define NEWLINE '\n'
+
+int main ()
+{
+  double r=5.0;               // radius
+  double circle;
+
+  circle = 2 * PI * r;
+  cout << circle;
+  cout << NEWLINE;
+
+}
+```
+
+# Operators
+## Assignment operator (=)
+example: `x = 5;`<br>
+example: `y = 2 + (x = 5);`<br>
+example: `x = y = z = 5;`
+
+## Arithmetic operators (+, -, *, /, %)
+
+| operator | description    |
+|----------|----------------|
+| +        | addition       |
+| -        | subtraction    |
+| *        | multiplication |
+| /        | division       |
+| %        | modulo         |
+
+example: `x = 11 % 3; // x = 2`
+
+## Compound assignment (+=, -=, *=, /=, %=, >>=, <<=, &=, ^=, |=)
+
+| expression | equivalent to                                                                                               |
+|------------|-------------------------------------------------------------------------------------------------------------|
+| `y += x;`  | `y = y + x;`                                                                                                |
+| `y -= 5;`  | `y = y - 5;`                                                                                                |
+| `y *= 3;`  | `y = y * 3;`                                                                                                |
+| `y /= x;`  | `y = y / 3;`                                                                                                |
+| `y %= 10`  | `y = y % 10;`                                                                                               |
+| `8 >>= 2;` | Right shift and Assign: shift the bits of the variable to the right by 2, `// binary: 8 = 1000 → 2 = 0010`  |
+| `8 >>= 2;` | Left shift and Assign: shift the bits of the variable to the left by 2, `// binary: 8 = 1000 → 32 = 100000` |
+|            |                                                                                                             |
+
