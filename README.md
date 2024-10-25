@@ -84,3 +84,41 @@ int main() { std::cout << "Hello World!"; }
 ```
 
 # Comments
+C++ supports two wats of commenting code:
+1. `// line comment`
+2. `/* block comment */`
+
+Example:
+```c++
+/* my second program in C++ 
+   with more comments */
+   
+#include <iostream>
+
+int main() {
+    std::cout << "Hello world!";  // prints Hello World!
+    std::cout << "I'm a C++ program"; // prints I'm a C++ program
+}
+```
+
+# Using namespace std
+`cout` is part of the standard library, and all the elements in the standard C++ library are declared within what is 
+called a *namespace*: the namespace std.
+In order to refer to the elements in the `std` namespace a program shall either qualify each and every use of elements 
+of the library or introduce visibility of its components. The most typical way to introduce visibility of these components 
+is by means of using declarations:
+`using namespace std;`
+
+Example:
+```c++
+// my second program in C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello World!";
+    cout << "I'm a C++ program";
+}
+```
+
+# Variables and types
