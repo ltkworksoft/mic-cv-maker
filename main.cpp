@@ -1,24 +1,22 @@
-// using
 #include <iostream>
+#include "CVMaker.h"
+#include <array>
 using namespace std;
-
-namespace first {
-    int x = 5;
-    int y = 10;
-}
-
-namespace second {
-    double x = 3.1416;
-    double y = 2.7183;
-}
+using namespace cvmaker;
 
 int main() {
-    using first::x;
-    using second::y;
+    int longueur, largeur;
+    cout << "Entrez la longueur: " << endl;
+    cin >> longueur;
+    cout << "Entrez la largeur: " << endl;
+    cin >> largeur;
 
-    cout << x << endl;
-    cout << y << endl;
-    cout << first::y << endl;
-    cout << second::x << endl;
+    for (int i = 0; i < longueur; i++) {
+        for (int j = 0; j < largeur && j < i + 1; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
     return 0;
 }

@@ -1446,3 +1446,68 @@ namespace. Most examples in these tutorials, in fact, include the following line
 
 
 # Arrays
+An array is a series of elements of the same type placed in contiguous memory locations that can be individually 
+referenced by adding an index to a unique identifier.
+
+For example, an array containing 5 integer values of type int called foo could be represented as:
+foo |0  |  1|  2|  3|  4|
+
+    |int|int|int|int|int|
+
+## Initializing arrays
+`int foo[5] = {16, 2, 5, 77, 40}`;
+This statement declares an array that can be represented like this:
+
+|0 |1|2|3 |4 |
+
+|16|2|5|77|40|
+
+`int foo[5] = {1, 2, 3} // [1][2][3][0][0]`
+
+## Accessing the values of an array
+`foo[2] = 75;` will store 75 in the element of `foo`.
+
+## Multidimensional arrays
+Multidimensional arrays can be described as "arrays of arrays".
+example: `int jimmy[3][5]` is an array of 3 rows and 5 columns
+
+|   | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| 0 |   |   |   |   |   |
+| 1 |   |   |   | x |   |
+| 2 |   |   |   |   |   |
+
+la position de x est `jimmy[1][3];`
+
+## Arrays as parameters
+example
+```c++
+// arrays as parameters
+#include <iostream>
+using namespace std;
+
+void printArray(int arg[], const int length) {
+    for (int i = 0; i < length; ++i) {
+        cout << arg[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int firstArray[] = {5, 10, 15};
+    int secondArray[] = {2, 4, 6, 8, 10};
+    printArray(firstArray, 3);
+    printArray(secondArray, 2);
+}
+```
+
+# Character sequences
+Example: `char foo [20]`, is an array that can store up to 20 elements of type `char`.
+
+Therefore, this array has a capacity to store sequences of up to 20 characters. But this capacity does not need to be 
+fully exhausted: the array can also accommodate shorter sequences. For example, at some point in a program, either 
+the sequence "Hello" or the sequence "Merry Christmas" can be stored in foo, since both would fit in a sequence with 
+a capacity for 20 characters.
+
+By convention, the end of strings represented in character sequences is signaled by a special character: 
+the null character, whose literal value can be written as '\0' (backslash, zero).
